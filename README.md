@@ -76,3 +76,6 @@ src/<br>
 - State management is planned to be done via prop drilling from parent component (App.tsx) after a future function returns dynamic data based on form submission.
 - Code refactoring is to be done according to the future of the simulator.
 - Testing will be implemented later.
+
+## Expected Frontend
+![result](https://github.com/user-attachments/assets/e32a32dd-d086-4b59-a53b-5f0bf21a2a46)
