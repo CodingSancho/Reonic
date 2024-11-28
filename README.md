@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+# Reonic Take Home Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The goal of this task is to build an input form for simulation parameters, and create a front-end interface for the simulation output using static data.
+The focus is on usability and responsiveness, with an important restriction rule of not using any UI libraries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Choices
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Tailwind
+- Zod (form validation)
+- Recharts (data visualization)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js
+- npm or yarn
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Clone the Repository<br>
+`git clone https://github.com/CodingSancho/Reonic.git`<br>
+`cd Reonic`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Install Dependencies<br>
+`npm install`<br>
+or<br>
+`yarn install`<br><br>
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Running the Application in Development Mode<br>
+`npm start`<br>
+or<br>
+`yarn start`<br>
+
+## Project Structure
+src/<br>
+├── components/<br>
+├── types/<br>
+├── utils/<br>
+└── App.tsx<br>
+
+## Features
+
+1) Form
+2) Charging Point Usage
+3) Hourly Charging Profile
+4) Charging Events
+5) Energy Consumption
+
+#### Input<br>
+- Details:
+  - The number of charge points.
+  - A multiplier for the arrival probability to increase the amount of cars arriving to charge (20-200%, default: 100%).
+  - The consumption of the cars (default: 18 kWh).
+  - The charging power per chargepoint (default: 11 kW).<br>
+
+- Assumptions:<br>
+  - The form is controlled when user clicks on "Run Simulation".<br>
+
+#### Output<br>
+- Details:
+  - The charging values (in kW) per chargepoint at a useful aggregation level.
+  - An exemplary day.
+  - The total energy charged (in kWh).
+  - The number of charging events per year/month/week/day.
+  - The amount of charging events/actual max power demand/energy consumed per day/week/month as a bar chart/heatmap.<br>
+
+- Assumptions:<br>
+  - Each ResponsiveContainer has fixed sizes, regardless of how many charging points user sets in the form.
+  - Dropdowns are not changing the state, to avoid creating overall six more charts with static dummy data.
+
+## Other
+
+- State management is planned to be done via prop drilling from parent component (App.tsx) after a future function returns dynamic data based on form submission.
+- Code refactoring is to be done according to the future of the simulator.
+- Testing will be implemented later.
